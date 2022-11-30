@@ -9,7 +9,7 @@ Not tested to work well.
 # Install
 
 - Run `npm install @solanyan/nuxt-ofetch-configure`
-- Add config `ofetch` to `nuxt.config.ts`
+- Add modules `@solanyan/nuxt-ofetch-configure` and config `ofetch` to `nuxt.config.ts`
 
 # Default Config
     ofetch: {
