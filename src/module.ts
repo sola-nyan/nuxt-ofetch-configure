@@ -6,12 +6,12 @@ export interface ModuleOptions {
   BASE_URL: string | undefined,
   METHOD: string | undefined,
   CREDENTIALS: RequestCredentials | undefined,
-  DEFAULT_HANDLER: {
-    CSRF:{
-      TARGET_METHODS : string[]
+  DEFAULT_ON_REQUEST?: {
+    CSRF?:{
+      TARGET_METHODS? : string[]
       ENABLE: boolean
-      HEADER_NAME: string
-      TOKEN_SUPPLIER: () => string
+      HEADER_NAME?: string
+      COOKIE_KEY?: string
     }
   }
 }
@@ -28,12 +28,12 @@ export default defineNuxtModule<ModuleOptions>({
     BASE_URL: '',
     METHOD: 'GET',
     CREDENTIALS: 'same-origin',
-    DEFAULT_HANDLER: {
+    DEFAULT_ON_REQUEST: {
       CSRF: {
         ENABLE: false,
         TARGET_METHODS: ['POST', 'PUT', 'DELETE', 'PATCH'],
         HEADER_NAME: 'X-XSRF-TOKEN',
-        TOKEN_SUPPLIER: () => document.cookie.match('(^|;)\\s*XSRF-TOKEN\\s*=\\s*([^;]+)')?.pop() ?? ''
+        COOKIE_KEY: 'XSRF-TOKEN'
       }
     }
   },

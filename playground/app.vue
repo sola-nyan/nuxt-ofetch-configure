@@ -1,5 +1,9 @@
 <script setup lang="ts">
-$fetch('/api/timetable/list')
+import { useCookie } from '#app'
+
+useCookie('XSRF-TOKEN').value = 'test'
+$fetch('/api/auth/login', { method: 'POST' })
+
 </script>
 
 <template>

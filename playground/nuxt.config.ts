@@ -6,7 +6,12 @@ export default defineNuxtConfig({
   modules: [
     MyModule
   ],
-  ofetch:{
-    BASE_URL: 'https://localhost:8443/'
+  ofetch: {
+    BASE_URL: 'https://localhost:8443/',
+    DEFAULT_ON_REQUEST: {
+      CSRF: {
+        ENABLE: true
+      }
+    }
   }
 })

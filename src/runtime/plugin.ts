@@ -1,5 +1,5 @@
 /* eslint-disable require-await */
-import { defineNuxtPlugin, useRuntimeConfig } from '#app'
+import { defineNuxtPlugin, useCookie, useRuntimeConfig } from '#app'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const cfg = useRuntimeConfig()
@@ -10,11 +10,11 @@ export default defineNuxtPlugin((nuxtApp) => {
     method: modOptions.METHOD,
     credentials: modOptions.CREDENTIALS as RequestCredentials,
     async onRequest ({ options }: any) {
-      const CSRF_OPT = modOptions.DEFAULT_HANDLER.CSRF
+      const CSRF_OPT = modOptions.DEFAULT_ON_REQUEST.CSRF
       if (CSRF_OPT.ENABLE) {
         if (CSRF_OPT.TARGET_METHODS.includes(options.method)) {
           if (options.headers === undefined) { options.headers = {} }
-          options.headers[CSRF_OPT.HEADER_NAME] = CSRF_OPT.TOKEN_SUPPLIER()
+          options.headers[CSRF_OPT.HEADER_NAME] = useCookie(CSRF_OPT.COOKIE_KEY).value
         }
       }
     }

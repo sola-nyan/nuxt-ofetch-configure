@@ -16,12 +16,12 @@ Not tested to work well.
         BASE_URL: '',
         METHOD: 'GET',
         CREDENTIALS: 'same-origin',
-        DEFAULT_HANDLER: {
+        DEFAULT_ON_REQUEST: {
             CSRF: {
                 ENABLE: false,
                 TARGET_METHODS: ['POST', 'PUT', 'DELETE', 'PATCH'],
                 HEADER_NAME: 'X-XSRF-TOKEN',
-                TOKEN_SUPPLIER: () => document.cookie.match('(^|;)\\s*XSRF-TOKEN\\s*=\\s*([^;]+)')?.pop() ?? ''
+                COOKIE_KEY: 'XSRF-TOKEN'
             }
         }
     }
