@@ -28,8 +28,10 @@ Not tested to work well.
     })
 
 # Options
-    - Basicaly, same as ofetch (unjs/ofetch) of `FetchOptions`
-    - and extended option under this
+- Basicaly, same as [ofetch (unjs/ofetch)](https://github.com/unjs/ofetch)  (`FetchOptions` https://github.com/unjs/ofetch/blob/main/src/fetch.ts)
+- and extended option under this
+
+        ...,
         CSRF?: {
             TARGET_METHODS?: string[]
             ENABLE: boolean
