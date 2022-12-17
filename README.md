@@ -2,36 +2,40 @@
 
 Not tested to work well.
 
+
 # FEATURE
 
-- override `globalThis.$fetch` by configured ofetch with `nuxt.config.ts`
+- Nuxt3 plugin (Not for nuxt2)
+- override `globalProperties.$fetch` 
 
 # Install
 
 - Run `npm install @solanyan/nuxt-ofetch-configure`
-- Add modules `@solanyan/nuxt-ofetch-configure` and config `ofetch` to `nuxt.config.ts`
+- Add plugin file for install
+    - import `OfetchConfigureInstallHelper` make install easy
 
-# Default Config
-    ofetch: {
-        BASE_URL: '',
-        METHOD: 'GET',
-        CREDENTIALS: 'same-origin',
-        DEFAULT_ON_REQUEST: {
+# Exsample
+~/plugin/ofetch.ts
+
+    export default defineNuxtPlugin((nuxtApp) => {
+        OfetchConfigureInstallHelper(nuxtApp, {
+            baseURL: 'https://localhost:8443/',
+            credentials: 'include',
             CSRF: {
-                ENABLE: false,
-                TARGET_METHODS: ['POST', 'PUT', 'DELETE', 'PATCH'],
-                HEADER_NAME: 'X-XSRF-TOKEN',
-                COOKIE_KEY: 'XSRF-TOKEN'
-            }
+                ENABLE: true,
+            },
+        })
+    })
+
+# Options
+    - Basicaly, same as ofetch (unjs/ofetch) of `FetchOptions`
+    - and extended option under this
+        CSRF?: {
+            TARGET_METHODS?: string[]
+            ENABLE: boolean
+            HEADER_NAME?: string
+            COOKIE_KEY?: string
         }
-    }
-
-# Development
-
-- Run `npm run dev:prepare` to generate type stubs.
-- Use `npm run dev` to start [playground](./playground) in development mode.
-
 # Licence
-
 MIT License © 2022 Sola-nyan
 
