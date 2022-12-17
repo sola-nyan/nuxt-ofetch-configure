@@ -6,7 +6,7 @@ Not tested to work well.
 # FEATURE
 
 - Nuxt3 plugin (Not for nuxt2)
-- override `globalProperties.$fetch` 
+- override `globalThis.$fetch` 
 
 # Install
 

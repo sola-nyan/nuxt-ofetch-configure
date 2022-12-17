@@ -44,7 +44,17 @@ const installer = (app: any, option: OfetchReconfigureOptions = {}) => {
       csrfTokenSupplier()
     }
   }
-  app.config.globalProperties.$fetch = $fetch.create(OPT)
+
+
+  const _fetch = $fetch.create(OPT)
+  app.provide('fetch', _fetch)
+  Object.defineProperty(globalThis, '$fetch', {
+    get() {
+      return _fetch
+    },
+    set() {
+    },
+  })
 }
 
 export const OfetchConfigureInstallHelper = (nuxtApp: any, option: OfetchReconfigureOptions) => {
