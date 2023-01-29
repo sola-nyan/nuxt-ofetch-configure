@@ -35,8 +35,8 @@ const installer = (app: any, option: OfetchReconfigureOptions = {}) => {
     const csrfTokenSupplier = () => {
       if (OPT.headers === undefined) {
         OPT.headers = {};
-        (OPT.headers as any)[OPT.CSRF!.HEADER_NAME!] = Cookies.get(OPT.CSRF!.COOKIE_KEY!)
       }
+      (OPT.headers as any)[OPT.CSRF!.HEADER_NAME!] = Cookies.get(OPT.CSRF!.COOKIE_KEY!)
     }
     OPT.onRequest = async (context: FetchContext) => {
       if (userCallback)
