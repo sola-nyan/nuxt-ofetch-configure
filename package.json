@@ -14,7 +14,6 @@
     "dist"
   ],
   "scripts": {
-    "tsc": "tsc",
     "build": "vite build"
   },
   "dependencies": {
