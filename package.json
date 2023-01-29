@@ -1,6 +1,6 @@
 {
   "name": "@solanyan/nuxt-ofetch-configure",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "license": "MIT",
   "type": "module",
   "main": "./dist/nuxt-ofetch-configure.umd.js",
